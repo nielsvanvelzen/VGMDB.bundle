@@ -1,5 +1,14 @@
 import vgmdb
 
+def get_lang(obj):
+	if 'ja-latn' in obj: return obj['ja-latn']
+	elif 'Romaji' in obj: return obj['Romaji']
+	elif 'en' in obj: return obj['en']
+	elif 'English' in obj: return obj['English']
+	elif 'ja' in obj: return obj['ja']
+	elif 'Japanese' in obj: return obj['Japanese']
+	else: return None
+
 def search_albums(results, media, lang):
     query = media.album
     if query is None:
@@ -13,7 +22,7 @@ def search_albums(results, media, lang):
     for album in result:
         results.Append(MetadataSearchResult(
             id = album['link'].replace('album/', ''),
-            name = album['titles']['en'],
+            name = get_lang(album['titles']),
             year = album['release_date'][0:4],
             score = s,
             lang = lang
@@ -33,7 +42,7 @@ def search_artists(results, media, lang):
     for artist in result:
         results.Append(MetadataSearchResult(
             id = artist['link'].replace('artist/', ''),
-            name = artist['names']['en'],
+            name = get_lang(artist['names']),
             score = s,
             lang = lang
         ))
