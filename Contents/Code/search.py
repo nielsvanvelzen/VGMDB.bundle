@@ -1,13 +1,13 @@
 import vgmdb
 
 def get_lang(obj):
-	if 'ja-latn' in obj: return obj['ja-latn']
-	elif 'Romaji' in obj: return obj['Romaji']
-	elif 'en' in obj: return obj['en']
-	elif 'English' in obj: return obj['English']
-	elif 'ja' in obj: return obj['ja']
-	elif 'Japanese' in obj: return obj['Japanese']
-	else: return None
+    if 'ja-latn' in obj: return obj['ja-latn']
+    elif 'Romaji' in obj: return obj['Romaji']
+    elif 'en' in obj: return obj['en']
+    elif 'English' in obj: return obj['English']
+    elif 'ja' in obj: return obj['ja']
+    elif 'Japanese' in obj: return obj['Japanese']
+    else: return None
 
 def search_albums(results, media, lang):
     query = media.album
